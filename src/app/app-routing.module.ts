@@ -4,12 +4,14 @@ import { LoginComponent } from './Component/login/login.component';
 import { RegisterComponent } from './Component/register/register.component';
 import { ForgetPasswordComponent } from './Component/forget-password/forget-password.component';
 import { ResetPasswordComponent } from './Component/reset-password/reset-password.component';
+import { DashboardComponent } from './Component/dashboard/dashboard.component';
 
 const routes: Routes = [
   {path:'register', component:RegisterComponent},
   {path:'login', component:LoginComponent},
   {path:'forgetPassword',component: ForgetPasswordComponent},
-  {path:'resetpassword', component: ResetPasswordComponent}
+  {path:'resetpassword/:token', component: ResetPasswordComponent},
+  {path:'dashboard', component:DashboardComponent}
 ];
 
 @NgModule({
