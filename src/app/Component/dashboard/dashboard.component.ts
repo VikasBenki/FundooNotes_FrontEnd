@@ -1,16 +1,14 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import {MatSidenav} from '@angular/material/sidenav';
+
 import {MediaMatcher} from '@angular/cdk/layout';
-import {ChangeDetectorRef} from '@angular/core';
+import {ChangeDetectorRef, Component, OnDestroy} from '@angular/core';
 
-
+/** @title Responsive sidenav */
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnDestroy {
-
   mobileQuery: MediaQueryList;
 
   fillerNav = Array.from({length: 50}, (_, i) => `Nav Item ${i + 1}`);

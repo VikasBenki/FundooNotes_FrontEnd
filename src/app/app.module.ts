@@ -23,6 +23,9 @@ import { DisplayComponent } from './Component/display/display.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatListModule} from '@angular/material/list';
+import { TrashComponent } from './Component/trash/trash.component';
+import { ArchieveComponent } from './Component/archieve/archieve.component';
+
 
 
 
@@ -37,7 +40,10 @@ import {MatListModule} from '@angular/material/list';
     TakeNoteComponent,
     IconsComponent,
     GetAllNotesComponent,
-    DisplayComponent
+    DisplayComponent,
+    TrashComponent,
+    ArchieveComponent,
+
   ],
   imports: [
     BrowserModule,
