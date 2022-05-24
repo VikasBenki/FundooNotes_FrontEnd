@@ -19,14 +19,19 @@ import { DashboardComponent } from './Component/dashboard/dashboard.component';
 import { TakeNoteComponent } from './Component/take-note/take-note.component';
 import { IconsComponent } from './Component/icons/icons.component';
 import { GetAllNotesComponent } from './Component/get-all-notes/get-all-notes.component';
-import { DisplayComponent } from './Component/display/display.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatListModule} from '@angular/material/list';
 import { TrashComponent } from './Component/trash/trash.component';
 import { ArchieveComponent } from './Component/archieve/archieve.component';
-
-
+import { UpdateComponent } from './Component/update/update.component';
+import {MatCardModule} from '@angular/material/card';
+import { DisplayNoteComponent } from './Component/display-note/display-note.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatMenuModule} from '@angular/material/menu';
+import { AuthguardService } from './Services/AuthguardServices/authguard.service';
+import {MatButtonModule} from '@angular/material/button';
 
 
 @NgModule({
@@ -40,9 +45,10 @@ import { ArchieveComponent } from './Component/archieve/archieve.component';
     TakeNoteComponent,
     IconsComponent,
     GetAllNotesComponent,
-    DisplayComponent,
     TrashComponent,
     ArchieveComponent,
+    UpdateComponent,
+    DisplayNoteComponent,
 
   ],
   imports: [
@@ -58,11 +64,18 @@ import { ArchieveComponent } from './Component/archieve/archieve.component';
     HttpClientModule,
     MatSidenavModule,
     MatToolbarModule,
-    MatListModule
+    MatListModule,
+    MatCardModule,
+    MatDialogModule,
+    MatSnackBarModule,
+    MatMenuModule,
+    MatButtonModule
 
 
   ],
-  providers: [],
+  providers: [
+    AuthguardService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

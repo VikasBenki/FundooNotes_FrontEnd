@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from 'src/app/Services/UserServices/user.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-register',
@@ -11,7 +12,7 @@ export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
   submitted = false;
 
-  constructor(private formBuilder: FormBuilder,private user: UserService) { }
+  constructor(private formBuilder: FormBuilder, private user: UserService, private snack: MatSnackBar) { }
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
@@ -29,15 +30,25 @@ export class RegisterComponent implements OnInit {
     if (this.registerForm.valid) {
       console.log("valid data", this.registerForm.value);
       let data = {
-        firstName:this.registerForm.value.firstName,
-        lastName:this.registerForm.value.lastName,
-        email: this.registerForm.value.email,       
+        firstName: this.registerForm.value.firstName,
+        lastName: this.registerForm.value.lastName,
+        email: this.registerForm.value.email,
         password: this.registerForm.value.password,
-        address:""
+        address: ""
       }
-      this.user.registration(data).subscribe((res:any)=>{
+      this.user.registration(data).subscribe((res: any) => {
         console.log(res);
-      })
+        this.snack.open('registration successfull..', '', {
+          duration: 2500,
+          verticalPosition: 'bottom'
+        })
+      },error=>{
+        this.snack.open('Registration failed', '', {
+          duration:2000,
+          verticalPosition: 'bottom'
+        })
+      });
+      
     }
     else {
       console.log("Invalid Data", this.registerForm.value);

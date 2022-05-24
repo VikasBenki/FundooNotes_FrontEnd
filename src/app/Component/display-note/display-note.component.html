@@ -1,0 +1,15 @@
+
+<div class="displayNote ">
+    <mat-card class="note" *ngFor="let note of recievedNoteList" [style.background]="note.bgColor">
+        <div class="Title">
+            <p  (click)="openDialog(note)">{{note.title}}</p>
+            <p (click)="openDialog(note)">{{note.description}}</p>
+            <p>{{note.token}}</p>
+
+        </div>
+        <div class="icons">
+            <app-icons  [notedata]="note" (UpdationEvent)="displayMessage($event)"></app-icons>
+        </div>
+     
+    </mat-card>
+</div>

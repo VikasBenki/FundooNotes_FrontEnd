@@ -1,17 +1,30 @@
 <div class="flex" fxLayout="row">
         
-    <img class="icon" src="../../../assets/add_alert_black_24dp.svg" alt="Remind Me">
+    <img class="icon"*ngIf="!isTrash"src="../../../assets/add_alert_black_24dp.svg" alt="Remind Me">
+        
+        <img class="icon" matTooltip="Background color" [matMenuTriggerFor]="color" *ngIf="!isTrash" src="../../../assets/palette_black_24dp.svg" alt="Collabarator">
+        
+        <mat-menu #color="matMenu">
+            <div fxLayout="row wrap" style="padding-left: 8px;">
+                <div *ngFor="let color of colors" class="bg-color">
+                    <button mat-icon-button mat-raised-button (click)="changeColor(color)" [style.background]="color" ></button>
+                </div>
+            </div>
+        </mat-menu>
+
+        <img class="icon" *ngIf="!isTrash"src="../../../assets/person_add_alt_1_black_24dp.svg" alt="Collabarator">
     
-        <img class="icon" src="../../../assets/palette_black_24dp.svg" alt="Collabarator">
-    
-        <img class="icon" src="../../../assets/person_add_alt_1_black_24dp.svg" alt="Collabarator">
-    
-        <img class="icon" src="../../../assets/image_black_24dp.svg" alt="image">
+        <img class="icon"*ngIf="!isTrash"src="../../../assets/image_black_24dp.svg" alt="image">
     
     
-        <img class="icon" src="../../../assets/archive_FILL0_wght400_GRAD0_opsz48.svg" alt="archive">
+        <img class="icon" matTooltip="Archive" (click)="archieve()" *ngIf="!isArchive && !isTrash" src="../../../assets/archive_FILL0_wght400_GRAD0_opsz48.svg" alt="archive">
+        <img class="icon" (click)="delete()" *ngIf="isTrash"  src="../../../assets/delete_forever_black_24dp.svg" alt="DeleteForever">
+        <img class="icon" (click)="Restore()" *ngIf="isTrash" src="../../../assets/restore_from_trash_black_24dp.svg" alt="restore">
+        <img class="icon" (click)="Unarchieve()" *ngIf="isArchive" src="../../../assets/unarchive_black_24dp.svg" alt="unArchive">
           
     
-        <img class="icon" src="../../../assets/more_vert_black_24dp.svg" alt="more">
-           
+        <img class="icon" *ngIf="!isTrash" [matMenuTriggerFor]="menu" src="../../../assets/more_vert_black_24dp.svg" alt="more">
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="trash()">Delete note</button>
+        </mat-menu>  
 </div>
